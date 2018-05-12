@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using MultiClientArchitecture.Models;
 
-namespace MultiClientArchitecture.Repository.Client.Interface
+namespace MultiClientArchitecture
 {
-	public interface IClientRepository:IClientIdentity
+	public interface  IClientIdentity
 	{
-		
+		ClientRecord OfClient { get; set; }
 	}
 }
