@@ -59,6 +59,7 @@
     <Compile Include="Repository\Admin\SqlAdminRepository.cs" />
     <Compile Include="Repository\SqlDbRepository.cs" />
     <Compile Include="Repository\Client\Interface\IClientRepository1.cs" />
+    <Compile Include="ServiceRegistry.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

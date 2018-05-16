@@ -2,14 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MultiClientArchitecture.Factory;
+using MultiClientArchitecture.BusinessService;
 using System.Web.Mvc;
 
 namespace Web.Controllers
 {
-	public class HomeController : Controller
+	public class HomeController : BaseController
 	{
+		readonly IBusinessService1 _businessService;
+		public HomeController(IClientFactory f):base(f) {
+			
+		}
+
 		public ActionResult Index()
 		{
+			
 			return View();
 		}
 

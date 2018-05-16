@@ -32,6 +32,5 @@ namespace MultiClientArchitecture.Factory
 			return clientEntity;
 		}
 
-		
 	}
 }
