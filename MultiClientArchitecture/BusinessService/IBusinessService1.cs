@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MultiClientArchitecture.BusinessService
 {
-	public interface IBusinessService : IClientIdentity
+	public interface IBusinessService1
 	{
 	}
 }

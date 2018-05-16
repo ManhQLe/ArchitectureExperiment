@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{26B4C271-12E9-4F64-A846-6FF2683F4D6B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MultiClientArchitecture</RootNamespace>
-    <AssemblyName>MultiClientArchitecture</AssemblyName>
+    <ProjectGuid>{AC5EE633-8AB4-417E-B842-C7DE80AE89F6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ArchitectureUsage</RootNamespace>
+    <AssemblyName>ArchitectureUsage</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +36,6 @@
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,25 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessService\BusinessService1.cs" />
-    <Compile Include="BusinessService\IBusinessService1.cs" />
-    <Compile Include="ClientIdentity.cs" />
-    <Compile Include="Factory\ClientFactory.cs" />
-    <Compile Include="Factory\IBaseFactory.cs" />
-    <Compile Include="Factory\IClientFactory.cs" />
-    <Compile Include="IClientIdentity.cs" />
-    <Compile Include="Models\ClientRecord.cs" />
-    <Compile Include="Models\CustomerRecord.cs" />
-    <Compile Include="Models\ReportRecord.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Admin\Interface\IAdminRepository.cs" />
-    <Compile Include="Repository\Admin\SqlAdminRepository.cs" />
-    <Compile Include="Repository\SqlDbRepository.cs" />
-    <Compile Include="Repository\Client\Interface\IClientRepository1.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MultiClientArchitecture\MultiClientArchitecture.csproj">
+      <Project>{26b4c271-12e9-4f64-a846-6ff2683f4d6b}</Project>
+      <Name>MultiClientArchitecture</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

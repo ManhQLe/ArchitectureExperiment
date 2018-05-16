@@ -19,29 +19,19 @@ namespace MultiClientArchitecture.Factory
 			_adminRepo = adminRepo;
 		}
 
-
 		public IKernel IoCContainer { get => _kernel; set => _kernel = value; }
 
-		public T GetClientRepository<T>(int clientId) where T: IClientRepository
+		public T GetClientEntity<T>(int clientId) where T: IClientIdentity
 		{
 			if (_kernel == null)
-				throw new Exception("IoC container is not configured for factory");
+				throw new Exception("IoC container is not configured for factorization");
 			var clientRecord = _adminRepo.GetClientRecordById(clientId);
 
-			T repo = IoCContainer.Get<T>();
-			repo.OfClient = clientRecord;
-			return repo;
+			T clientEntity = IoCContainer.Get<T>();
+			clientEntity.OfClient = clientRecord;
+			return clientEntity;
 		}
 
-		public T GetClientService<T>(int clientId) where T : IBusinessService
-		{
-			if (_kernel == null)
-				throw new Exception("IoC container is not configured for factory");
-			var clientRecord = _adminRepo.GetClientRecordById(clientId);
-
-			T repo = IoCContainer.Get<T>();
-			repo.OfClient = clientRecord;
-			return repo;
-		}
+		
 	}
 }

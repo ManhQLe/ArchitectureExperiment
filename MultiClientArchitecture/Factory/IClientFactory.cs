@@ -11,7 +11,7 @@ namespace MultiClientArchitecture.Factory
 {
 	public interface IClientFactory: IBaseFactory
 	{
-		T GetClientRepository<T>(int clientId) where T : IClientRepository;
-		T GetClientService<T>(int clientId) where T : IBusinessService;
+		T GetClientEntity<T>(int clientId) where T : IClientIdentity;
+	
 	}
 }
