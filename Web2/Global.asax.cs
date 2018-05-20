@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
+using Web2.Middleware;
 namespace Web2
 {
 	public class MvcApplication : System.Web.HttpApplication
@@ -15,7 +15,8 @@ namespace Web2
 			AreaRegistration.RegisterAllAreas();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
-			BundleConfig.RegisterBundles(BundleTable.Bundles);			
+			BundleConfig.RegisterBundles(BundleTable.Bundles);
+			ControllerBuilder.Current.SetControllerFactory(new CustomControllerFac());
 		}
 	}
 }
