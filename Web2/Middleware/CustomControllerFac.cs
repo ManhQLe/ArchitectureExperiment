@@ -12,7 +12,7 @@ namespace Web2.Middleware
 {
 	public class CustomControllerFac: DefaultControllerFactory
 	{
-		public static object o = new object();
+		public object o = new object();
 
 		protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
 		{
@@ -21,7 +21,6 @@ namespace Web2.Middleware
 			lock (o) {
 				Debug.WriteLine(ThreadId +" is working...");
 				Thread.Sleep(3000);
-
 			}
 			Debug.WriteLine(ThreadId + " is done");
 			
