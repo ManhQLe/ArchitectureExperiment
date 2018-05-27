@@ -21,7 +21,7 @@ namespace Architecture2.Impl
 			{
 				var clientInfo =  _centralAdminRepo.GetClientById(clientId);
 				IClientEntity e = new MySampleClientRepo();
-				e.ClientId = clientInfo;
+				e.Client = clientInfo;
 				return (T)e;
 			});
 		}

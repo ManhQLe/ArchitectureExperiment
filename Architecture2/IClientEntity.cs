@@ -8,6 +8,6 @@ namespace Architecture2
 {
 	public interface IClientEntity
 	{
-		ClientInfo ClientId { get; set; }
+		ClientInfo Client { get; set; }
 	}
 }

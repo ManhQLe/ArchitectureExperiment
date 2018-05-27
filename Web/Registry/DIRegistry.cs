@@ -21,7 +21,7 @@ namespace Web.Registry
 				IKernel kernel = new StandardKernel();				
 
 				DIRegistry.RegisterDependencies(kernel);
-				return new MagicResolver(kernel);
+				return null;
 			}
 		}
 	}

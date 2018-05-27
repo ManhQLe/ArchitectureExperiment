@@ -7,24 +7,38 @@ using System.Web.Routing;
 using System.Threading;
 using System.Diagnostics;
 using System.IO;
+using Ninject;
+using Ninject.Activation.Blocks;
+using Ninject.Activation;
 
 namespace Web2.Middleware
 {
+	public class X : StandardKernel{
+		public override IEnumerable<object> Resolve(IRequest request)
+		{
+			
+			return base.Resolve(request);
+		}
+	}
+
 	public class CustomControllerFac: DefaultControllerFactory
 	{
-		public object o = new object();
+		private readonly IKernel _kernel;
+
+		public CustomControllerFac(IKernel kernel) {
+			_kernel = kernel;
+		}
 
 		protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
 		{
-			int ThreadId = Thread.CurrentThread.ManagedThreadId;
-			Debug.WriteLine("Thread: " + ThreadId + " is entering...");
-			lock (o) {
-				Debug.WriteLine(ThreadId +" is working...");
-				Thread.Sleep(3000);
-			}
-			Debug.WriteLine(ThreadId + " is done");
-			
-			return base.GetControllerInstance(requestContext, controllerType);			
+			var constructor = controllerType.GetConstructors().First();
+
+			var parameters = constructor
+		   .GetParameters()
+		   .Select(argument => _kernel.GetService(argument.ParameterType))
+		   .ToArray();
+						
+			return (IController)constructor.Invoke(parameters);
 		}
 	}
 }

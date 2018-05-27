@@ -4,39 +4,41 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading;
+using Architecture2;
 using System.Diagnostics;
 using Ninject;
 namespace Web2.Middleware
 {
 	public class CustomResolver : IDependencyResolver
 	{
-		public int _Id = 0;
-		
-		public int Id {
-			get { return _Id; }
-			set {
-
-				if (_Id > 0)
-				{
-					lock (this)
-					{
-						_Id = value;
-					}
-				}
-			}
+		readonly IKernel _kernel;
+		public CustomResolver(IKernel kernel) {
+			_kernel = kernel;
 		}
 
-
 		public object GetService(Type serviceType)
-		{
-			Debug.WriteLine("Thread: " + Thread.CurrentThread.ManagedThreadId + " getting service for " + serviceType);
-
-			return null;
+		{			
+			object o = null;
+			try
+			{
+				o =  _kernel.Get(serviceType);				
+			}
+			catch
+			{
+				Debug.WriteLine("Not found");				
+			}
+			return o;
 		}
 
 		public IEnumerable<object> GetServices(Type serviceType)
 		{
-			return null;
+			try
+			{
+				return _kernel.GetAll(serviceType);
+			}
+			catch {
+				return new List<object>();
+			}
 		}
 	}
 }

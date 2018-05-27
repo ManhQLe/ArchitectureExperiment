@@ -11,7 +11,7 @@ namespace Architecture2.Impl
 		IClientEntity, 
 		IMySampleRepo
 	{
-		public ClientInfo ClientId { get; set; }
+		public ClientInfo Client { get; set; }
 
 		public IEnumerable<string> GetListOfSample()
 		{
